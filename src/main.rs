@@ -1,5 +1,6 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
-use yew::prelude::*;
+use actix_yew_docker::App;
+
+// use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 
 // #[get("/")]
 // async fn hello() -> impl Responder {
@@ -31,11 +32,4 @@ use yew::prelude::*;
 
 fn main() {
     yew::start_app::<App>();
-}
-
-#[function_component(App)]
-fn app() -> Html {
-    html! {
-        <h1>{"Hello World!"}</h1>
-    }
 }
