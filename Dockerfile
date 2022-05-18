@@ -6,8 +6,9 @@ RUN cargo install trunk
 
 RUN cargo install -f wasm-bindgen-cli
 
-EXPOSE 3000
+EXPOSE 8080
 
+VOLUME [ "app" ]
 WORKDIR /app
 
 CMD [ "trunk", "serve" ]
