@@ -18,7 +18,12 @@ pub fn app() -> Html {
 
     log!(name);
     log!(serde_json::to_string_pretty(&my_struct).unwrap());
+
+    let class_name: &str = "classe";
     html! {
-        <h1>{"Hello World!"}</h1>
+        <>
+            <h1 class={class_name}>{"Hello World!"}</h1>
+            <p>{"Olá"}</p>
+        </>
     }
 }
