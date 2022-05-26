@@ -21,6 +21,14 @@ pub fn app() -> Html {
 
     let class_name: &str = "classe";
     let message: Option<&str> = Some("Mensagem");
+
+    let to_do_list = vec![
+        "ir no mercado",
+        "comprar cerveja",
+        "pedir um X",
+        "assistir aula",
+    ];
+
     html! {
         <>
             <h1 class={class_name}>{"Hello World!"}</h1>
@@ -36,6 +44,10 @@ pub fn app() -> Html {
             } else {
                 <p>{"sem mensagem"}</p>
             }
+
+            <ul>
+                {to_do_list.iter().map(|item| html!{<li>{item}</li>}).collect::<Html>()}
+            </ul>
 
         </>
     }
