@@ -46,9 +46,14 @@ pub fn app() -> Html {
             }
 
             <ul>
-                {to_do_list.iter().map(|item| html!{<li>{item}</li>}).collect::<Html>()}
+            // {to_do_list.iter().map(|item| html!{<li>{item}</li>}).collect::<Html>()}
+                {to_li_html(to_do_list)}
             </ul>
 
         </>
     }
+}
+
+fn to_li_html(list: Vec<&str>) -> Vec<Html> {
+    list.iter().map(|item| html! {<li>{item}</li>}).collect()
 }
