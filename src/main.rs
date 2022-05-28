@@ -1,5 +1,4 @@
 use actix_yew_docker::App;
-
 // use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 
 // #[get("/")]

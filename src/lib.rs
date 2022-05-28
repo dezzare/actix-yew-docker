@@ -1,5 +1,6 @@
 use gloo::console::log;
 use serde::Serialize;
+use stylist::{style, yew::styled_component};
 use yew::prelude::*;
 
 #[derive(Serialize)]
@@ -7,9 +8,20 @@ struct MyStruct {
     first_name: String,
     last_name: String,
 }
-
-#[function_component(App)]
+#[styled_component(App)]
 pub fn app() -> Html {
+    let stylesheet = style!(
+        r#"
+            h1 {
+                color: orange;    
+            }
+
+            p {
+                color: red;
+            }
+        "#
+    )
+    .unwrap();
     let name: &str = "Pedro";
     let my_struct: MyStruct = MyStruct {
         first_name: name.to_owned(),
@@ -19,7 +31,6 @@ pub fn app() -> Html {
     log!(name);
     log!(serde_json::to_string_pretty(&my_struct).unwrap());
 
-    let class_name: &str = "classe";
     let message: Option<&str> = Some("Mensagem");
 
     let to_do_list = vec![
@@ -31,13 +42,7 @@ pub fn app() -> Html {
 
     html! {
         <>
-            <h1 class={class_name}>{"Hello World!"}</h1>
-
-            if class_name == "classe" {
-                <p>{"Olá"}</p>
-            } else {
-                <p>{"Else"}</p>
-            }
+            <h1 class={stylesheet}>{"Hello World!"}</h1>
 
             if let Some(message) = message {
                 <p>{message}</p>
