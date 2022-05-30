@@ -50,7 +50,7 @@ pub fn app() -> Html {
                 <p>{"sem mensagem"}</p>
             }
 
-            <ul>
+            <ul class={css!("color: yellow;")}>
             // {to_do_list.iter().map(|item| html!{<li>{item}</li>}).collect::<Html>()}
                 {to_li_html(to_do_list)}
             </ul>
