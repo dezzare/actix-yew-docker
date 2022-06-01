@@ -1,6 +1,6 @@
 use gloo::console::log;
 use serde::Serialize;
-use stylist::{style, yew::styled_component};
+use stylist::{style, yew::styled_component, Style};
 use yew::prelude::*;
 
 #[derive(Serialize)]
@@ -10,18 +10,6 @@ struct MyStruct {
 }
 #[styled_component(App)]
 pub fn app() -> Html {
-    let stylesheet = style!(
-        r#"
-            h1 {
-                color: orange;    
-            }
-
-            p {
-                color: red;
-            }
-        "#
-    )
-    .unwrap();
     let name: &str = "Pedro";
     let my_struct: MyStruct = MyStruct {
         first_name: name.to_owned(),
@@ -40,9 +28,12 @@ pub fn app() -> Html {
         "assistir aula",
     ];
 
+    const STYLESHEE_FILE: &str = include_str!("style.css");
+    let stylesheet: Style = Style::new(STYLESHEE_FILE).unwrap();
     html! {
         <>
-            <h1 class={stylesheet}>{"Hello World!"}</h1>
+        <div class={stylesheet}>
+            <h1>{"Hello World!"}</h1>
 
             if let Some(message) = message {
                 <p>{message}</p>
@@ -50,10 +41,11 @@ pub fn app() -> Html {
                 <p>{"sem mensagem"}</p>
             }
 
-            <ul class={css!("color: yellow;")}>
+            <ul>
             // {to_do_list.iter().map(|item| html!{<li>{item}</li>}).collect::<Html>()}
                 {to_li_html(to_do_list)}
             </ul>
+        </div>
 
         </>
     }
