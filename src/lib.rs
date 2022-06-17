@@ -1,18 +1,18 @@
-use stylist::{yew::styled_component, Style};
+use gloo::console::log;
+use stylist::yew::styled_component;
 use yew::prelude::*;
 
 mod components;
 
 use components::main_title::{Color, MainTitle};
 
-const STYLESHEE_FILE: &str = include_str!("style.css");
-
 #[styled_component(App)]
 pub fn app() -> Html {
-    let stylesheet: Style = Style::new(STYLESHEE_FILE).unwrap();
+    let main_title_load: Callback<String> = Callback::from(|message: String| log!(message));
+
     html! {
-        <div class={stylesheet}>
-            <MainTitle title="Olá  mundo!" color={Color::Ok} />
+        <div>
+            <MainTitle title="Olá  mundo!" color={Color::Ok} on_load={main_title_load}/>
         </div>
     }
 }
