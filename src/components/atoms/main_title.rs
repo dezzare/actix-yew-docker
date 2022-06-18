@@ -29,24 +29,27 @@ impl Color {
 pub fn main_title(props: &Props) -> Html {
     let stylesheet = style!(
         r#"
-        .normal {
-            color: black;
-    }
-        .ok {
-            color: green;
-    }
-        .error {
-            color: red;
-    }
+      .normal {
+        color: white;
+      }
+
+      .ok {
+        color: green;
+      }
+
+      .error {
+        color: red;
+      }
     "#
     )
     .unwrap();
 
-    props.on_load.emit("Carregado".to_owned());
+    props.on_load.emit("I loaded!!!!!".to_owned());
 
     html! {
-        <div class={stylesheet}>
-            <h1 class={props.color.to_string()}>{ &props.title } </h1>
-        </div>
+      <div class={stylesheet}>
+        <h1 class={props.color.to_string()}>{&props.title}</h1>
+      </div>
     }
 }
+
